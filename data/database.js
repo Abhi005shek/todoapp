@@ -4,6 +4,6 @@ export default function connectDB(){
 mongoose.connect(process.env.MONGO_URI,{
     dbName: 'apidata',
 })
-.then(() => console.log("Database Connected")).catch(() => console.log("Sorry!! Couldn't Connect"));
+.then((c) => console.log(`Database Connected with ${c.connection.host}`)).catch(() => console.log("Sorry!! Couldn't Connect"));
 
 }
