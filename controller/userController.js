@@ -20,6 +20,7 @@ export const login = async (req,res) => {
    if(isMatch) {
      return res.status(200).cookie("token",token,{
       httpOnly:true,
+      expires: new Date(Date.now() + 1000*60*15),
       sameSite: process.env.NODE_ENV === "DEVELOPMENT" ? "lax" : "none",
       secure: process.env.NODE_ENV === "DEVELOPMENT" ? false : true,
    }).json({
@@ -60,6 +61,7 @@ export const register = async (req,res) => {
    
     res.status(201).cookie("token",token,{
        httpOnly: true,
+       expires: new Date(Date.now() + 1000*60*15),
        sameSite: process.env.NODE_ENV === "DEVELOPMENT" ? "lax" : "none",
        secure: process.env.NODE_ENV === "DEVELOPMENT" ? false : true,
     }).json({
